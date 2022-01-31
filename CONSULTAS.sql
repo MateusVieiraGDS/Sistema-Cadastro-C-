@@ -15,4 +15,4 @@ CREATE TABLE `dbcsharp`.`pessoa` (
 SELECT * FROM pessoa;
 
 #---- TRECHO PARA APAGAR REGISTRO DE PESSOA
-DELETE pessoa WHERE pessoa.id = ?;
+DELETE pessoa FROM pessoa WHERE pessoa.id = ?;

@@ -23,7 +23,6 @@ namespace TesteBancoMySQL.SGBD
             SGBDCONN = new MySqlConnection();
             SGBDCONN.ConnectionString = connectionString;
         }
-
         public bool OpenConnection()
         {
             try

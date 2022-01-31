@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TesteBancoMySQL.Exceptions;
+using TesteBancoMySQL.SGBD;
 
 namespace TesteBancoMySQL
 {
@@ -25,6 +26,16 @@ namespace TesteBancoMySQL
 
         private void btn_add_Click(object sender, EventArgs e)
         {
+            if(input_nome.Text == "" || input_email.Text == "" || input_telefone.Text == "")
+            {
+                MessageBox.Show(
+                            $"Preencha todos os campos para continuar.",
+                            "Dados Incompletos",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                return;
+            }
             Pessoa p = new Pessoa(input_nome.Text, input_email.Text, input_telefone.Text, input_datePickerNasc.Value);
 
             try
@@ -60,7 +71,8 @@ namespace TesteBancoMySQL
         }
 
         private void InsertRegistro(Pessoa p) {
-            
+            var fa = SGBDFileAcess.loadChanges();
+            if (fa.Configured() == false) return;
         }
 
     }
