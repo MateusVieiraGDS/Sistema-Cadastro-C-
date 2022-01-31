@@ -159,6 +159,7 @@ namespace TesteBancoMySQL.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "FormAddSGBDConfig";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Adicionar Conexão";
             this.Load += new System.EventHandler(this.FormAddSGBDConfig_Load);
             this.ResumeLayout(false);

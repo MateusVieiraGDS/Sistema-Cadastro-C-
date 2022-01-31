@@ -42,6 +42,11 @@ namespace TesteBancoMySQL
             this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adicionarConexãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.apagarConexãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.repositórioGITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.créditosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_reg)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -153,7 +158,8 @@ namespace TesteBancoMySQL
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.configuraçõesToolStripMenuItem});
+            this.configuraçõesToolStripMenuItem,
+            this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(597, 24);
@@ -164,6 +170,8 @@ namespace TesteBancoMySQL
             // 
             this.configuraçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.adicionarConexãoToolStripMenuItem,
+            this.apagarConexãoToolStripMenuItem,
+            this.toolStripSeparator1,
             this.sairToolStripMenuItem});
             this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
             this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
@@ -172,16 +180,51 @@ namespace TesteBancoMySQL
             // adicionarConexãoToolStripMenuItem
             // 
             this.adicionarConexãoToolStripMenuItem.Name = "adicionarConexãoToolStripMenuItem";
-            this.adicionarConexãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.adicionarConexãoToolStripMenuItem.Text = "Adicionar Conexão";
+            this.adicionarConexãoToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.adicionarConexãoToolStripMenuItem.Text = "Configurar Conexão";
             this.adicionarConexãoToolStripMenuItem.Click += new System.EventHandler(this.adicionarConexãoToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
+            // 
+            // apagarConexãoToolStripMenuItem
+            // 
+            this.apagarConexãoToolStripMenuItem.Name = "apagarConexãoToolStripMenuItem";
+            this.apagarConexãoToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.apagarConexãoToolStripMenuItem.Text = "Apagar Conexão";
+            this.apagarConexãoToolStripMenuItem.Click += new System.EventHandler(this.apagarConexãoToolStripMenuItem_Click);
+            // 
+            // ajudaToolStripMenuItem
+            // 
+            this.ajudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.repositórioGITToolStripMenuItem,
+            this.créditosToolStripMenuItem});
+            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
+            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.ajudaToolStripMenuItem.Text = "Ajuda";
+            // 
+            // repositórioGITToolStripMenuItem
+            // 
+            this.repositórioGITToolStripMenuItem.Name = "repositórioGITToolStripMenuItem";
+            this.repositórioGITToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.repositórioGITToolStripMenuItem.Text = "Repositório GIT";
+            this.repositórioGITToolStripMenuItem.Click += new System.EventHandler(this.repositórioGITToolStripMenuItem_Click);
+            // 
+            // créditosToolStripMenuItem
+            // 
+            this.créditosToolStripMenuItem.Name = "créditosToolStripMenuItem";
+            this.créditosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.créditosToolStripMenuItem.Text = "Créditos";
+            this.créditosToolStripMenuItem.Click += new System.EventHandler(this.créditosToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -202,6 +245,7 @@ namespace TesteBancoMySQL
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Controle de Usuário";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StopSGBDConnection);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -228,6 +272,11 @@ namespace TesteBancoMySQL
         private System.Windows.Forms.ToolStripMenuItem configuraçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adicionarConexãoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem apagarConexãoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem repositórioGITToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem créditosToolStripMenuItem;
     }
 }
 

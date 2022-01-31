@@ -143,6 +143,7 @@ namespace TesteBancoMySQL
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "FormNewReg";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Adicionar novo Registro";
             this.Load += new System.EventHandler(this.FormNewReg_Load);
             this.ResumeLayout(false);

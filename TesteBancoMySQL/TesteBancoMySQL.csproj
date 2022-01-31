@@ -103,6 +103,12 @@
     <Compile Include="Forms\FormAddSGBDConfig.Designer.cs">
       <DependentUpon>FormAddSGBDConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormCreditos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCreditos.Designer.cs">
+      <DependentUpon>FormCreditos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormNewReg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     <EmbeddedResource Include="Forms\FormAddSGBDConfig.resx">
       <DependentUpon>FormAddSGBDConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCreditos.resx">
+      <DependentUpon>FormCreditos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormNewReg.resx">
       <DependentUpon>FormNewReg.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +145,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -153,6 +163,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Util\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dance.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brbr.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brbr[1].mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brbr_1_.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

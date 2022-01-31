@@ -90,7 +90,7 @@ namespace TesteBancoMySQL
 
             if(
             MessageBox.Show(
-                $"Tem certeza que deseja escluir este registro do banco de dados ?",
+                $"Tem certeza que deseja excluir este registro do banco de dados ?",
                 "Confirmação de Exclusão",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Error
@@ -153,6 +153,30 @@ namespace TesteBancoMySQL
                     DeleteRegistro(int.Parse(cell.Value.ToString()));
             }
             
+        }
+
+        private void apagarConexãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (
+            MessageBox.Show(
+                $"Tem certeza que deseja excluir as configurações de conexão ?",
+                "Confirmação de Exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Error
+            ) == DialogResult.No)
+                return;
+            SGBDFileAcess.DeleteChanges();
+        }
+
+        private void repositórioGITToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"https://github.com/MateusVieiraGDS/Sistema-Cadastro-C-");
+        }
+
+        private void créditosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCreditos fc = new FormCreditos();
+            fc.ShowDialog();
         }
     }
 }
