@@ -169,6 +169,7 @@ namespace TesteBancoMySQL
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "MySQL Tester";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StopSGBDConnection);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_reg)).EndInit();
             this.ResumeLayout(false);

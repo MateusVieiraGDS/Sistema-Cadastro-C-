@@ -27,7 +27,36 @@ namespace TesteBancoMySQL
         {
             Pessoa p = new Pessoa(input_nome.Text, input_email.Text, input_telefone.Text, input_datePickerNasc.Value);
 
-            
+            try
+            {
+                InsertRegistro(p);
+            }
+            catch (SQLConnectionException ce)
+            {
+                MessageBox.Show(
+                    $"Erro ao conectar ao Banco de Dados, tente novamente !\n\n[{ce.Message}]",
+                    "ERRO DE CONEXÃO",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+            catch (SQLDuplicateException de)
+            {
+                MessageBox.Show(
+                    $"Este usuário já existe na base de dados. Modifique os dados e tente novamente.\n\n[{de.Message}]",
+                    "Usuário Duplicado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
+            catch (SQLDataBaseQueryException qe) {
+                MessageBox.Show(
+                    $"Houve um erro inesperado na execução da consulta.\n\n[{qe.Message}]",
+                    "Erro de Consulta",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
         }
 
         private void InsertRegistro(Pessoa p) {
