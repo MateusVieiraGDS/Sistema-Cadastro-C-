@@ -198,7 +198,9 @@ namespace TesteBancoMySQL
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Controle de Usuário";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StopSGBDConnection);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +22,7 @@ namespace TesteBancoMySQL
 
         private void FormNewReg_Load(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Abort;
+
         }
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -41,6 +42,7 @@ namespace TesteBancoMySQL
             try
             {
                 InsertRegistro(p);
+                this.DialogResult = DialogResult.OK;
             }
             catch (SQLConnectionException ce)
             {
@@ -73,7 +75,26 @@ namespace TesteBancoMySQL
         private void InsertRegistro(Pessoa p) {
             var fa = SGBDFileAcess.loadChanges();
             if (fa.Configured() == false) return;
-        }
 
+            using (SGBDConnect conn = new SGBDConnect(fa.ToString()))
+            {
+                conn.OpenConnection();
+                if (conn.State != ConnectionState.Open)
+                    throw new SQLConnectionException("Não foi possivel abrir uma conexão estável com o Banco de Dados.");
+
+                try
+                {
+                    var result = conn.ExecuteQuery($"SELECT id FROM pessoa WHERE email = '{p.Email}' OR telefone = '{p.Telefone}'");
+                    if (result.RowsCount > 0)
+                        throw new SQLDuplicateException("Usuário com dados duplicados [EMAIL/TELEFONE]");
+
+                    result = conn.ExecuteQuery($"INSERT INTO pessoa (nome, email, telefone, nascimento) VALUES ('{p.Nome}', '{p.Email}', '{p.Telefone}', '{p.Nascimento.ToString("yyyy-MM-dd")}');");                    
+                }
+                catch (MySqlException me)
+                {
+                    throw new SQLDataBaseQueryException(me.Message);
+                }
+            }
+        }
     }
 }

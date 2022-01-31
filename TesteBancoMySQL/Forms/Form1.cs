@@ -53,7 +53,7 @@ namespace TesteBancoMySQL
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            
+            AddRegistro();
         }
 
 

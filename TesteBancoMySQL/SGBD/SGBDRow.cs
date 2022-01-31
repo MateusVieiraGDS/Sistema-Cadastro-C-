@@ -20,10 +20,12 @@ namespace TesteBancoMySQL.SGBD
         }
         public void setValue(string columName, SGBDValue value)
         {
+            //if (row_data.ContainsKey(columName) == false) return;
             row_data[columName] = value;
         }
         public SGBDValue getValue(string columName)
         {
+            if (row_data.ContainsKey(columName) == false) return null;
             return row_data[columName];
         }
     }

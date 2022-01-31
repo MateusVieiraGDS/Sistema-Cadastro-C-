@@ -141,6 +141,7 @@ namespace TesteBancoMySQL
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "FormNewReg";
             this.Text = "Adicionar novo Registro";
             this.Load += new System.EventHandler(this.FormNewReg_Load);

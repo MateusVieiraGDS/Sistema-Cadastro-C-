@@ -16,3 +16,6 @@ SELECT * FROM pessoa;
 
 #---- TRECHO PARA APAGAR REGISTRO DE PESSOA
 DELETE pessoa FROM pessoa WHERE pessoa.id = ?;
+
+#---- TRECHO PARA INSERIR PESSOA
+INSERT INTO pessoa (nome, email, telefone, nascimento) VALUES (?, ?, ?, ?);

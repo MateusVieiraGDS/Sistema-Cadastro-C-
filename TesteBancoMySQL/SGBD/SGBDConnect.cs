@@ -46,12 +46,6 @@ namespace TesteBancoMySQL.SGBD
             using (MySqlDataReader reader = query.ExecuteReader())
             {
                 SGBDResult result = new SGBDResult(reader);
-                foreach (var row in result)
-                {
-                    Console.WriteLine(row.getValue("nome").value);
-                    ;
-                }
-                ;
 
                 //Console.WriteLine(reader.GetDataTypeName(0));
                 //Console.WriteLine(reader.GetFieldType(0));
