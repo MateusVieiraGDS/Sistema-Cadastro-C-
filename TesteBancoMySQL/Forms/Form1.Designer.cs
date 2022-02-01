@@ -224,7 +224,7 @@ namespace TesteBancoMySQL
             this.créditosToolStripMenuItem.Name = "créditosToolStripMenuItem";
             this.créditosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.créditosToolStripMenuItem.Text = "Créditos";
-            this.créditosToolStripMenuItem.Click += new System.EventHandler(this.créditosToolStripMenuItem_Click);
+            this.créditosToolStripMenuItem.Click += new System.EventHandler(this.creditosToolStripMenuItem_Click);
             // 
             // Form1
             // 

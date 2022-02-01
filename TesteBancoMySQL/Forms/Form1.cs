@@ -1,15 +1,10 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TesteBancoMySQL.Forms;
 using TesteBancoMySQL.SGBD;
+using TesteBancoMySQL.Util;
 
 namespace TesteBancoMySQL
 {
@@ -58,63 +53,31 @@ namespace TesteBancoMySQL
 
 
         private void ReloadData() {
-            var fa = SGBDFileAcess.loadChanges();
-            if (fa.Configured() == false) return;
+            var result = PessoaManagerDB.getAllPessoas();
+            if (result == null) return;
 
             dataGrid_reg.Columns.Clear();
             dataGrid_reg.Rows.Clear();
 
-            using (SGBDConnect conn = new SGBDConnect(fa.ToString()))
+            int nc = 0;
+            foreach (var cinfo in result.ColumsInfos)
             {
-                conn.OpenConnection();
-                var result = conn.ExecuteQuery("SELECT * FROM pessoa;");
-                int nc = 0;
-                foreach(var cinfo in result.ColumsInfos)
-                {
-                    dataGrid_reg.Columns.Add(cinfo.ColumName, cinfo.ColumName.ToUpper());
-                    dataGrid_reg.Columns[nc].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                    nc++;
-                }
+                dataGrid_reg.Columns.Add(cinfo.ColumName, cinfo.ColumName.ToUpper());
+                dataGrid_reg.Columns[nc].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                nc++;
+            }
 
-                foreach (var res in result)
-                {
-                    var values_temp = (from v in res.getValues() select v.Value.value).ToArray();
-                    dataGrid_reg.Rows.Add(values_temp);
-                }
+            foreach (var res in result)
+            {
+                var values_temp = (from v in res.getValues() select v.Value.value).ToArray();
+                dataGrid_reg.Rows.Add(values_temp);
             }
         }
 
         private void DeleteRegistro(int userID) {
-            var fa = SGBDFileAcess.loadChanges();
-            if (fa.Configured() == false) return;
+            var result = PessoaManagerDB.RemovePessoa(userID);
+            if (result == false) return;
 
-            if(
-            MessageBox.Show(
-                $"Tem certeza que deseja excluir este registro do banco de dados ?",
-                "Confirmação de Exclusão",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Error
-            ) == DialogResult.No)
-            return;
-
-            using (SGBDConnect conn = new SGBDConnect(fa.ToString()))
-            {
-                conn.OpenConnection();
-                var result = conn.ExecuteQuery("DELETE pessoa FROM pessoa WHERE pessoa.id = " + userID);
-                int nc = 0;
-                foreach (var cinfo in result.ColumsInfos)
-                {
-                    dataGrid_reg.Columns.Add(cinfo.ColumName, cinfo.ColumName.ToUpper());
-                    dataGrid_reg.Columns[nc].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                    nc++;
-                }
-
-                foreach (var res in result)
-                {
-                    var values_temp = (from v in res.getValues() select v.Value.value).ToArray();
-                    dataGrid_reg.Rows.Add(values_temp);
-                }
-            }
             ReloadData();
         }
         private void AddRegistro() {
@@ -173,7 +136,7 @@ namespace TesteBancoMySQL
             System.Diagnostics.Process.Start(@"https://github.com/MateusVieiraGDS/Sistema-Cadastro-C-");
         }
 
-        private void créditosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void creditosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormCreditos fc = new FormCreditos();
             fc.ShowDialog();

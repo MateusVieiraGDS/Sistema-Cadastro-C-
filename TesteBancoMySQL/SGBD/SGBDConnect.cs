@@ -1,17 +1,13 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 
 
 namespace TesteBancoMySQL.SGBD
 {
-   class SGBDConnect : IDisposable
+    class SGBDConnect : IDisposable
     {
         private MySqlConnection SGBDCONN;
         private bool disposedValue;
@@ -52,6 +48,25 @@ namespace TesteBancoMySQL.SGBD
                 //Console.WriteLine(reader.GetName(0));
                 return result;
             }                        
+        }
+
+        public SGBDResult ExecuteQueryPrepare(String queryStr, params object[] parametros)
+        {
+            if (SGBDCONN.State != ConnectionState.Open) return null;
+
+            using (MySqlCommand query = new MySqlCommand(queryStr, SGBDCONN))
+            {
+                for (int pi = 0; pi < parametros.Length; pi++)
+                    query.Parameters.AddWithValue("param" + (pi + 1), parametros[pi]);
+
+                query.Prepare();
+                using (MySqlDataReader reader = query.ExecuteReader())
+                {                    
+                    SGBDResult result = new SGBDResult(reader);
+                    return result;
+                }
+            }
+            
         }
 
         protected virtual void Dispose(bool disposing)

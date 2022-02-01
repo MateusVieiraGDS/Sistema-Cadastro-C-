@@ -125,6 +125,7 @@
     <Compile Include="SGBD\SGBDResult.cs" />
     <Compile Include="SGBD\SGBDRow.cs" />
     <Compile Include="SGBD\SGBDValue.cs" />
+    <Compile Include="Util\PessoaManagerDB.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,9 +162,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Util\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\dance.gif" />
   </ItemGroup>
